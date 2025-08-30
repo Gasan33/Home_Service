@@ -6,13 +6,10 @@ import Image from "next/image"
 import HeaderPath from "../../_components/HeaderPath"
 import { ArrowRightIcon, PhoneIcon } from "lucide-react"
 import { Mail01Icon } from "hugeicons-react"
-import AOS from "aos"
-import "aos/dist/aos.css"
+
 
 const AboutUs = () => {
-    useEffect(() => {
-        AOS.init({ duration: 1000 })
-    }, [])
+
 
     return (
         <div className="mt-6">
