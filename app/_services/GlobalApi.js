@@ -148,6 +148,122 @@ const GetUserBookingHistory = async (userEmail) => {
 
 }
 
+const GetAllMaids = async () => {
+  const query = gql`
+  query MyQuery {
+  maids {
+    id
+    image {
+      url
+    }
+    cv {
+      url
+    }
+    firstTimeWorker
+    experience
+    languages
+    maritalStatus
+    name
+    nationality
+    position
+    religion
+    salary
+    skills
+    age
+    video {
+      url
+    }
+
+  }
+}
+  `
+
+  const result = await request(MASTER_URL, query)
+  return result;
+}
+
+const GetMaidsByNationality = async (nationality) => {
+  const query = gql`
+  query MyQuery {
+  maids(where: {nationality: "`+ nationality + `"}) {
+    age
+    cv {
+      url
+    }
+    firstTimeWorker
+    id
+    image {
+      url
+    }
+    languages
+    maritalStatus
+    name
+    nationality
+    position
+    religion
+    salary
+    skills
+  }
+}
+  `
+  const result = await request(MASTER_URL, query)
+  return result;
+}
+const GetMaidsByLanguages = async (languages) => {
+  const query = gql`
+  query MyQuery {
+  maids(where: {languages_contains_all: "`+ languages + `"}) {
+    age
+    cv {
+      url
+    }
+    firstTimeWorker
+    id
+    image {
+      url
+    }
+    languages
+    maritalStatus
+    name
+    nationality
+    position
+    religion
+    salary
+    skills
+  }
+}
+  `
+  const result = await request(MASTER_URL, query)
+  return result;
+}
+const GetMaidsByReligion = async (religion) => {
+  const query = gql`
+  query MyQuery {
+  maids(where: {religion: "`+ religion + `"}) {
+    age
+    cv {
+      url
+    }
+    firstTimeWorker
+    id
+    image {
+      url
+    }
+    languages
+    maritalStatus
+    name
+    nationality
+    position
+    religion
+    salary
+    skills
+  }
+}
+  `
+  const result = await request(MASTER_URL, query)
+  return result;
+}
+
 export default {
   getCategory,
   getAllBusinessList,
@@ -156,6 +272,10 @@ export default {
   createNewBooking,
   BusinessBookedSlot,
   GetUserBookingHistory,
+  GetAllMaids,
+  GetMaidsByNationality,
+  GetMaidsByLanguages,
+  GetMaidsByReligion,
 }
 
 
